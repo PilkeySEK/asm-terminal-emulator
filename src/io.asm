@@ -1,8 +1,10 @@
 extern sys_write
 extern strlen
+extern sys_read
 
 global prints
 global printc
+global reads
 
 ; arguments:
 ; rdi: pointer to string
@@ -30,4 +32,15 @@ printc:
     mov rsi, 1
     call print
     pop rdi
+    ret
+
+; read chars stdin
+; arguments:
+; rdi: buffer (char*)
+; rsi: buffer size
+reads:
+    mov rdx, rsi
+    mov rsi, rdi
+    mov rdi, 0 ; 0 = stdin
+    call sys_read
     ret

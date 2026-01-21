@@ -1,4 +1,7 @@
+; https://www.chromium.org/chromium-os/developer-library/reference/linux-constants/syscalls/#x86_64-64-bit
+
 global sys_write
+global sys_read
 
 ; arguments:
 ; rdx: file descriptor
@@ -12,5 +15,14 @@ sys_write:
     ; restore arg3 into rdi
     mov rdi, rcx
     mov rax, 1
+    syscall
+    ret
+
+; arguments:
+; rdi: file descriptor
+; rsi: buf (char*)
+; rdx: count (buf length)
+sys_read:
+    xor rax, rax ; set rax to 0
     syscall
     ret
