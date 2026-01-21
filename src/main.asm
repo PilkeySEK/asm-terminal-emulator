@@ -15,6 +15,11 @@ global main
 ; rdi = argc
 ; rsi = argv (char**)
 main:
+    
+    ret
+
+; may be used in the future
+print_args:
     mov r10, 0
     .loop:
         cmp r10, rdi
