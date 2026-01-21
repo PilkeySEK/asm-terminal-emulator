@@ -7,7 +7,7 @@ global _start
 _start:
     xor rbp, rbp
     
-    ; get argc
+    ; get argc - see https://dzone.com/articles/displaying-all-argv-x64
     mov rdi, [rsp]
     ; rsp+8 is argv i think
     mov rsi, rsp
