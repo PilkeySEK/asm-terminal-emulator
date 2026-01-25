@@ -3,6 +3,7 @@ extern sys_write
 extern prints
 extern printc
 extern reads
+extern memset
 
 section .data
 prompt: db "> ", 0
@@ -20,6 +21,9 @@ main:
     call prints
     sub rsp, 16 ; we only read 1 byte but the stack must be aligned 16 bytes at function calls (or so it seems)
     mov rdi, rsp
+    mov rsi, 16
+    mov rdx, 0
+    call memset
     push rdi
     mov rsi, 15
     call reads
